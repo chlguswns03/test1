@@ -1,0 +1,1822 @@
+/* 
+   국가공무원인재개발원 (NHI) x 먼작귀(치이카와·하치와레·우사기) 스페셜 에디션
+   테마: 몽환적 파스텔 퍼플&스카이블루 & 크리미 옐로우 & 핑크 (Chiikawa Pastel Dream Theme)
+*/
+
+:root {
+  /* 먼작귀 시그니처 파스텔 팔레트 */
+  --chiikawa-white: #ffffff;
+  --chiikawa-pink: #ffb7c5;        /* 치이카와 볼터치 핑크 */
+  --chiikawa-pink-dark: #f0809b;
+  --hachiware-blue: #60a5fa;       /* 하치와레 스카이블루 */
+  --hachiware-blue-light: #dbeafe;
+  --usagi-yellow: #fde047;         /* 우사기 크림 옐로우 */
+  --usagi-yellow-dark: #eab308;
+  --kurimanju-brown: #d97706;      /* 쿠리만주 */
+  --momonga-cyan: #38bdf8;         /* 모몽가 */
+  
+  --primary: #4c1d95;              /* 밤하늘 별빛 바이올렛 */
+  --primary-light: #6d28d9;
+  --primary-soft: #ede9fe;
+  --secondary: #ec4899;            /* 러블리 로즈핑크 */
+  --accent: #38bdf8;               /* 맑은 블루 */
+  
+  --bg-page: #fdfaf7;              /* 따뜻하고 부드러운 밀크 화이트 */
+  --bg-card: #ffffff;
+  --bg-alt: #fef6f8;               /* 은은한 핑크밀크 */
+  --bg-hero: linear-gradient(135deg, #2e1065 0%, #4c1d95 40%, #7c3aed 70%, #93c5fd 100%);
+
+  --text-dark: #1e1b4b;            /* 딥 바이올렛 블랙 */
+  --text-body: #4c4468;
+  --text-muted: #7c7299;
+  --text-light: #ffffff;
+
+  --border: #f3e8ff;
+  --border-pink: #fbcfe8;
+  --border-blue: #bfdbfe;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 4px 10px rgba(76, 29, 149, 0.05);
+  --shadow-md: 0 10px 25px rgba(236, 72, 153, 0.1);
+  --shadow-lg: 0 20px 40px rgba(76, 29, 149, 0.15);
+  --shadow-pop: 0 8px 0px #e9d5ff;
+
+  --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 다크 테마: 치이카와 밤하늘 별빛 테마 */
+body.dark-mode {
+  --primary: #c084fc;
+  --primary-light: #d8b4fe;
+  --primary-soft: #2e1065;
+  --bg-page: #0f0a1c;
+  --bg-card: #1c1433;
+  --bg-alt: #251b42;
+  --text-dark: #faf5ff;
+  --text-body: #d8b4fe;
+  --text-muted: #a855f7;
+  --border: #3b2d61;
+  --border-pink: #581c87;
+  --border-blue: #1e3a8a;
+  --shadow-pop: 0 8px 0px #3b2d61;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-body);
+  background-color: var(--bg-page);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(#fbcfe8 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+body.dark-mode {
+  background-image: radial-gradient(rgba(192, 132, 252, 0.15) 1px, transparent 1px);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 귀여운 바운스 애니메이션 */
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(251, 207, 232, 0.6); }
+  50% { box-shadow: 0 0 30px rgba(192, 132, 252, 0.8); }
+}
+
+/* 1. 최상단 먼작귀 유틸 바 */
+.top-util-bar {
+  background: #1e1338;
+  color: #e9d5ff;
+  font-size: 0.85rem;
+  padding: 8px 0;
+  border-bottom: 2px solid #3b2d61;
+}
+
+.util-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gov-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chii-mini-icon {
+  font-size: 1.1rem;
+  animation: floatAnim 2s infinite ease-in-out;
+}
+
+.util-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.util-links a {
+  color: #f3e8ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.util-links a:hover {
+  color: var(--usagi-yellow);
+}
+
+.util-links a.highlight {
+  color: #fbcfe8;
+  background: rgba(236, 72, 153, 0.25);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--usagi-yellow);
+  color: #1e1b4b;
+  transform: rotate(20deg);
+}
+
+/* 2. 헤더 */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border-pink);
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.05);
+}
+
+body.dark-mode .main-header {
+  background-color: rgba(28, 20, 51, 0.94);
+  border-bottom-color: var(--border);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 82px;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.chii-avatar-badge {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #ffb7c5, #fbcfe8);
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(240, 128, 155, 0.4);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  animation: floatAnim 3s infinite ease-in-out;
+}
+
+.brand-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-affil {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--secondary);
+  letter-spacing: -0.2px;
+}
+
+.brand-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  letter-spacing: -0.6px;
+  line-height: 1.2;
+}
+
+.brand-title span {
+  color: #ec4899;
+}
+
+.brand-en {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-link {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-nav-btn {
+  display: none;
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  padding: 8px;
+}
+
+/* 귀여운 푸딩 스타일 버튼들 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.88rem;
+}
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+}
+
+.btn-chii-pink {
+  background: linear-gradient(135deg, #ff80a5, #f43f5e);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4), var(--shadow-pop);
+}
+
+.btn-chii-pink:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(244, 63, 94, 0.5);
+}
+
+.btn-chii-blue {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn-chii-blue:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5);
+}
+
+.btn-chii-yellow {
+  background: linear-gradient(135deg, #fde047, #facc15);
+  color: #713f12;
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+}
+
+.btn-chii-yellow:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-chii-glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-chii-glass:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+/* 3. 먼작귀 히어로 섹션 */
+.chiikawa-hero {
+  position: relative;
+  background: var(--bg-hero);
+  color: #ffffff;
+  padding: 90px 0 80px;
+  overflow: hidden;
+}
+
+.hero-stars-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, #fde047 1.5px, transparent 1.5px),
+    radial-gradient(circle, #ffffff 1px, transparent 1px);
+  background-size: 50px 50px, 25px 25px;
+  background-position: 0 0, 25px 25px;
+  opacity: 0.6;
+}
+
+.hero-flex {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-chii-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  backdrop-filter: blur(6px);
+}
+
+.hero-main-title {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -1.2px;
+  margin-bottom: 18px;
+}
+
+.star-text {
+  color: #fde047;
+  text-shadow: 0 0 20px rgba(253, 224, 71, 0.6);
+}
+
+.hero-sub-text {
+  font-size: 1.1rem;
+  color: #f3e8ff;
+  margin-bottom: 34px;
+  line-height: 1.7;
+}
+
+.hero-cta-box {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* 캐릭터 인사이트 카드 */
+.hero-characters-ribbon {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.char-chip {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.char-chip:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 히어로 우측 유저 업로드 이미지 카드 */
+.hero-media-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.chii-img-frame {
+  position: relative;
+  border-radius: 36px;
+  overflow: hidden;
+  border: 6px solid #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 0 8px rgba(255, 255, 255, 0.2);
+  background: #fff;
+  transition: transform 0.4s ease;
+}
+
+.chii-img-frame:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+.chii-img-frame img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(30, 19, 56, 0.9) 100%);
+  padding: 24px 20px 16px;
+  color: #fff;
+}
+
+.caption-tag {
+  background: #fde047;
+  color: #713f12;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.frame-caption p {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* 플로팅 말풍선 */
+.floating-speech-bubble {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  background: #ffffff;
+  color: #1e1b4b;
+  padding: 12px 18px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  animation: floatAnim 2.5s infinite ease-in-out;
+  border: 3px solid #ffb7c5;
+  z-index: 20;
+}
+
+.bubble-avatar {
+  font-size: 1.4rem;
+}
+
+/* 4. 협력 기관 섹션 (먼작귀 스타일) */
+.partners-section {
+  background-color: var(--bg-card);
+  border-bottom: 2px dashed var(--border-pink);
+  padding: 40px 0;
+}
+
+.partners-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.partners-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--secondary);
+  background: #fdf2f8;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+
+.partners-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.partner-card {
+  background-color: var(--bg-page);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.partner-card:hover {
+  background-color: #ffffff;
+  border-color: #ff80a5;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+.partner-emblem {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-emblem.intl {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  font-size: 1.1rem;
+}
+
+.partner-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.25;
+}
+
+.p-role {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* 섹션 공통 헤더 */
+.section {
+  padding: 85px 0;
+}
+
+.bg-alt {
+  background-color: var(--bg-alt);
+}
+
+.section-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+
+.section-chii-badge {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: #ede9fe;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+/* 5. 기관 소개 & 미션 / 먼작귀 응원 배너 */
+.mission-vision-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.mv-card {
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-pink);
+  border-radius: var(--radius-lg);
+  padding: 38px 32px;
+  position: relative;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.mv-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: #f43f5e;
+}
+
+.mv-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mv-icon-chii {
+  font-size: 2rem;
+  animation: bounceSlow 2s infinite ease-in-out;
+}
+
+.mv-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--secondary);
+  background: #fff1f2;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.mv-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.mv-desc {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* 먼작귀 학습 격려 배너 */
+.chii-encouragement-card {
+  background: linear-gradient(135deg, #fff5f7 0%, #fef3c7 50%, #eff6ff 100%);
+  border: 3px solid #fbcfe8;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 36px;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .chii-encouragement-card {
+  background: linear-gradient(135deg, #2a1b40 0%, #3b204a 50%, #1e293b 100%);
+  border-color: #581c87;
+}
+
+.chii-illust-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #ffffff;
+  box-shadow: var(--shadow-md);
+  margin: 0 auto;
+}
+
+.chii-illust-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chii-encourage-body h3 {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.chii-encourage-body p {
+  font-size: 1rem;
+  color: var(--text-body);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.chii-speech-bubbles {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bubble-tag {
+  background: #ffffff;
+  border: 2px solid #ffb7c5;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+body.dark-mode .bubble-tag {
+  background: #1c1433;
+  color: #fbcfe8;
+}
+
+.bubble-tag:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* 6. 주요 업무 (5대 책임) 카드 */
+.tasks-grid-chii {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 28px;
+}
+
+.task-chii-card {
+  background-color: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-chii-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ff80a5, #fde047, #60a5fa);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.task-chii-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: #ffb7c5;
+}
+
+.task-chii-card:hover::before {
+  opacity: 1;
+}
+
+.task-head-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.char-badge-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  background-color: var(--bg-alt);
+  box-shadow: var(--shadow-sm);
+}
+
+.task-index {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ec4899;
+}
+
+.task-chii-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.task-summary-chii {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.task-bullets-chii {
+  border-top: 1px dashed var(--border-pink);
+  padding-top: 18px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-bullets-chii li {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  position: relative;
+  padding-left: 18px;
+}
+
+.task-bullets-chii li::before {
+  content: '🌸';
+  position: absolute;
+  left: 0;
+  font-size: 0.8rem;
+}
+
+.task-bullets-chii li strong {
+  color: var(--text-dark);
+}
+
+/* 7. 로드맵 (귀여운 탭 버튼) */
+.roadmap-chii-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.rm-chii-btn {
+  padding: 12px 24px;
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-pink);
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rm-chii-btn:hover {
+  transform: translateY(-3px);
+  border-color: #ec4899;
+  color: #ec4899;
+}
+
+.rm-chii-btn.active {
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+  color: #ffffff;
+  border-color: #ec4899;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.roadmap-panel {
+  display: none;
+}
+
+.roadmap-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.rm-chii-card {
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-pink);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rm-left .rm-tag-pill {
+  display: inline-block;
+  padding: 4px 14px;
+  background-color: #fdf2f8;
+  color: #ec4899;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.rm-left h3 {
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.rm-left p {
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.rm-tags-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rm-tags-box span {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.rm-right {
+  background-color: var(--bg-alt);
+  border: 2px dashed var(--border-pink);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.rm-metric-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.rm-metric-row i {
+  font-size: 1.4rem;
+  color: #ec4899;
+  margin-top: 3px;
+}
+
+.rm-metric-row strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.rm-metric-row span {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* 8. 찾아오시는 길 (먼작귀 캠퍼스 투어) */
+.campus-switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.campus-select-btn {
+  background-color: var(--bg-card);
+  border: 3px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.campus-avatar {
+  font-size: 2.2rem;
+  animation: floatAnim 3s infinite ease-in-out;
+}
+
+.campus-select-btn strong {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.campus-select-btn span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.campus-select-btn:hover {
+  border-color: #ffb7c5;
+}
+
+.campus-select-btn.active {
+  border-color: #ec4899;
+  background-color: #fdf2f8;
+  box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .campus-select-btn.active {
+  background-color: #2a1636;
+}
+
+.campus-view-box {
+  display: none;
+}
+
+.campus-view-box.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.campus-banner-chii {
+  border-radius: var(--radius-lg);
+  padding: 38px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.jincheon-banner {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+  border: 3px solid #93c5fd;
+}
+
+.gwacheon-banner {
+  background: linear-gradient(135deg, #831843 0%, #be185d 50%, #f43f5e 100%);
+  border: 3px solid #fbcfe8;
+}
+
+.c-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.campus-banner-chii h3 {
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.c-address {
+  font-size: 1.05rem;
+  opacity: 0.95;
+  margin-bottom: 18px;
+}
+
+.c-phones {
+  display: inline-flex;
+  gap: 24px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+/* 과천 주차 경고 배너 */
+.parking-alert-chii {
+  background-color: #fff1f2;
+  border: 2px solid #fda4af;
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+body.dark-mode .parking-alert-chii {
+  background-color: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.4);
+}
+
+.parking-alert-chii .alert-icon {
+  font-size: 2rem;
+  animation: bounceSlow 1.5s infinite;
+}
+
+.alert-text strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #be123c;
+  margin-bottom: 4px;
+}
+
+body.dark-mode .alert-text strong {
+  color: #fda4af;
+}
+
+.alert-text p {
+  font-size: 0.92rem;
+  color: #9f1239;
+}
+
+body.dark-mode .alert-text p {
+  color: #fecdd3;
+}
+
+/* 길안내 카드 그리드 */
+.directions-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 26px;
+  margin-bottom: 32px;
+}
+
+.dir-card-chii {
+  background-color: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.dir-card-chii.highlight {
+  border-color: #ec4899;
+  background: linear-gradient(180deg, #fff5f7 0%, var(--bg-card) 20%);
+}
+
+.dir-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 2px dashed var(--border-pink);
+  margin-bottom: 20px;
+}
+
+.dir-card-header i {
+  font-size: 1.6rem;
+  color: #ec4899;
+}
+
+.dir-card-header h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.dir-step-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.step-chii-badge {
+  width: 32px;
+  height: 32px;
+  background: #fdf2f8;
+  border: 2px solid #fbcfe8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: #ec4899;
+  flex-shrink: 0;
+}
+
+.dir-step-row strong {
+  display: block;
+  font-size: 0.98rem;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.dir-step-row p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.durations-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.durations-wrap span {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.notice-callout-chii {
+  margin-top: auto;
+  background-color: #eff6ff;
+  border: 2px solid #bfdbfe;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  color: #1e40af;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+body.dark-mode .notice-callout-chii {
+  background-color: rgba(30, 58, 138, 0.25);
+  border-color: #1e3a8a;
+  color: #bfdbfe;
+}
+
+.shuttle-schedule-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.s-point {
+  background-color: var(--bg-alt);
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-pink);
+}
+
+.s-point strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.s-times strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.s-times ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s-times li {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  padding-left: 16px;
+  position: relative;
+}
+
+.s-times li::before {
+  content: '⭐';
+  position: absolute;
+  left: 0;
+  font-size: 0.75rem;
+}
+
+.car-routes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.car-routes-list strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.code-pill {
+  background-color: var(--bg-alt);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-family: monospace;
+  font-weight: 800;
+  color: #ec4899;
+  border: 1px solid var(--border-pink);
+}
+
+.parking-state-badge {
+  margin-top: auto;
+  padding: 12px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parking-state-badge.allow {
+  background-color: #f0fdf4;
+  border: 2px solid #86efac;
+  color: #15803d;
+}
+
+.parking-state-badge.deny {
+  background-color: #fff1f2;
+  border: 2px solid #fecdd3;
+  color: #be123c;
+}
+
+/* 외부 지도 링크 바 */
+.external-map-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: var(--bg-card);
+  border: 2px dashed var(--border-pink);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  flex-wrap: wrap;
+}
+
+.external-map-bar span {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.map-link-btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-size: 0.92rem;
+  font-weight: 800;
+  transition: var(--transition);
+}
+
+.map-link-btn.naver {
+  background-color: #03c75a;
+  color: #ffffff;
+}
+
+.map-link-btn.naver:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(3, 199, 90, 0.4);
+}
+
+.map-link-btn.kakao {
+  background-color: #fee500;
+  color: #191919;
+}
+
+.map-link-btn.kakao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(254, 229, 0, 0.4);
+}
+
+/* 9. 시설 안내 (귀여운 카드) */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.fac-item-card {
+  background-color: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.fac-item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: #ffb7c5;
+}
+
+.fac-chii-circle {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #fdf2f8, #fbcfe8);
+  border: 3px solid #ffffff;
+  box-shadow: var(--shadow-sm);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 18px;
+}
+
+.fac-item-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.fac-item-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* 10. FAQ 아코디언 */
+.faq-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-card {
+  background-color: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-trigger {
+  width: 100%;
+  padding: 22px 26px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.faq-trigger:hover {
+  background-color: var(--bg-alt);
+  color: #ec4899;
+}
+
+.faq-trigger i {
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+}
+
+.faq-card.active .faq-trigger i {
+  transform: rotate(180deg);
+  color: #ec4899;
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: var(--bg-alt);
+  padding: 0 26px;
+}
+
+.faq-content p {
+  padding: 16px 0 22px;
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+/* 11. 푸터 */
+.chiikawa-footer {
+  background-color: #171026;
+  color: #d8b4fe;
+  padding: 80px 0 40px;
+  border-top: 3px solid #3b204a;
+}
+
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-brand span {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.footer-bio {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #c4b5fd;
+  margin-bottom: 20px;
+}
+
+.footer-col h4 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #fde047;
+  margin-bottom: 18px;
+}
+
+.footer-col p {
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-quick-links a {
+  font-size: 0.88rem;
+  color: #d8b4fe;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-quick-links a:hover {
+  color: #fde047;
+}
+
+.copyright-text {
+  font-size: 0.8rem;
+  color: #9333ea;
+}
+
+/* 모달 레이어 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 10, 28, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-overlay.show {
+  display: flex;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.modal-dialog {
+  background-color: var(--bg-card);
+  width: 100%;
+  max-width: 580px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 3px solid #fbcfe8;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  border-bottom: 2px dashed var(--border-pink);
+}
+
+.modal-head h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.modal-close-btn {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+}
+
+.modal-content-area {
+  padding: 28px;
+}
+
+.select-label {
+  display: block;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.custom-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border-pink);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  background-color: var(--bg-card);
+  color: var(--text-dark);
+  margin-bottom: 22px;
+}
+
+.modal-dynamic-info {
+  background-color: var(--bg-alt);
+  border: 2px dashed var(--border-pink);
+  padding: 20px;
+  border-radius: var(--radius-md);
+}
+
+.modal-actions {
+  padding: 18px 28px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 반응형 */
+@media (max-width: 1080px) {
+  .hero-flex {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-chii-badge {
+    margin: 0 auto 20px;
+  }
+  .hero-cta-box {
+    justify-content: center;
+  }
+  .hero-characters-ribbon {
+    justify-content: center;
+  }
+  .hero-media-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .partners-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .mission-vision-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .chii-encouragement-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .chii-speech-bubbles {
+    justify-content: center;
+  }
+  .rm-chii-card {
+    grid-template-columns: 1fr;
+  }
+  .footer-main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-util-bar .gov-badge-group {
+    display: none;
+  }
+  .top-util-bar .util-inner {
+    justify-content: flex-end;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 82px;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-card);
+    border-bottom: 2px solid var(--border-pink);
+    padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: var(--shadow-lg);
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .mobile-nav-btn {
+    display: block;
+  }
+  .header-cta .btn {
+    display: none;
+  }
+  .hero-main-title {
+    font-size: 2.2rem;
+  }
+  .partners-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .campus-switcher {
+    grid-template-columns: 1fr;
+  }
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
